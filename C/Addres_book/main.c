@@ -1,20 +1,16 @@
-/*1426107	syouta hirama		*
-*ƒƒ{ƒbƒgƒvƒƒOƒ‰ƒ~ƒ“ƒO ‰Û‘è	*
-*ƒAƒhƒŒƒX’ 						*/
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>	//srand()‚ÌƒV[ƒh’l¶¬‚Ì‚½‚ß
+#include <time.h>	//srand()ã®ã‚·ãƒ¼ãƒ‰å€¤ç”Ÿæˆã®ãŸã‚
 #include <string.h>
-#include <Windows.h>	//Sleep()‚Ì‚½‚ß
-#include <ctype.h>	//–¼‘O‚Ì“ª•¶š‚ğ‘å•¶š‚É•ÏŠ·‚·‚é‚½‚ß
+#include <Windows.h>	//Sleep()ã®ãŸã‚
+#include <ctype.h>	//åå‰ã®é ­æ–‡å­—ã‚’å¤§æ–‡å­—ã«å¤‰æ›ã™ã‚‹ãŸã‚
 #include <conio.h>
 
-#define ARRAY_SIZE 256	//”z—ñ‚ÌƒTƒCƒY‚ğw’è
+#define ARRAY_SIZE 256	//é…åˆ—ã®ã‚µã‚¤ã‚ºã‚’æŒ‡å®š
 #define ENTER 0x0D
 #define BACKSPACE 0x08
 
-//ƒfƒtƒHƒ‹ƒgŠÖ”
+//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆé–¢æ•°
 void new_addres( );
 void read_addres( );
 void serch_addres(char strserch[ARRAY_SIZE]);
@@ -31,7 +27,7 @@ void option();
 FILE *file;
 FILE *config;
 
-const char filename[] = "addres.addres";	//ƒtƒ@ƒCƒ‹–¼‚Ìw’è
+const char filename[] = "addres.addres";	//ãƒ•ã‚¡ã‚¤ãƒ«åã®æŒ‡å®š
 char passinit[ARRAY_SIZE];
 char pass[ARRAY_SIZE];
 
@@ -47,13 +43,13 @@ int main(void)
 {
 	int passlimit = 0;
 	char password[ARRAY_SIZE];
-	char *user = getenv("USERNAME");	//ƒRƒ“ƒsƒ…[ƒ^–¼‚Ì•\¦‚Ì‚½‚ß‚ÉŠÂ‹«•Ï”‚ğæ“¾
+	char *user = getenv("USERNAME");	//ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿åã®è¡¨ç¤ºã®ãŸã‚ã«ç’°å¢ƒå¤‰æ•°ã‚’å–å¾—
 	char mode[ARRAY_SIZE];
 	configfile();
 
-	printf("Hello, %s\n", user);	//ƒRƒ“ƒsƒ…[ƒ^–¼‚Ì•\¦
+	printf("Hello, %s\n", user);	//ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿åã®è¡¨ç¤º
 
-	help(mode);	//ƒ‚[ƒhˆê——‚Ì•\¦
+	help(mode);	//ãƒ¢ãƒ¼ãƒ‰ä¸€è¦§ã®è¡¨ç¤º
 	printf("\n");
 
 	if (strcmp(passinit, "TRUE") == 0){
@@ -77,11 +73,11 @@ int main(void)
 	}
 
 	if (strcmp(password, pass) == 0){
-		while (strcmp(mode, "end") != 0)	//"end"‚ª“ü—Í‚³‚ê‚é‚Ü‚Å‘±‚¯‚é
+		while (strcmp(mode, "end") != 0)	//"end"ãŒå…¥åŠ›ã•ã‚Œã‚‹ã¾ã§ç¶šã‘ã‚‹
 		{
 
-			memset(mode, '\0', sizeof mode);	//mode”z—ñ‚ğ‰Šú‰»
-			file = fopen(filename, "a+");	//’Ç‰Á‘‚«‚İƒ‚[ƒh‚Åƒtƒ@ƒCƒ‹‚ğŠJ‚­
+			memset(mode, '\0', sizeof mode);	//modeé…åˆ—ã‚’åˆæœŸåŒ–
+			file = fopen(filename, "a+");	//è¿½åŠ æ›¸ãè¾¼ã¿ãƒ¢ãƒ¼ãƒ‰ã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã
 			printf("mode select >");
 			strget(mode, sizeof mode);
 
@@ -117,24 +113,24 @@ int main(void)
 			}
 			else if (strcmp(mode, "end") == 0);
 			else if (strncmp(mode, "help", 4) == 0) help(mode);
-			else if (strcmp(mode, "cls") == 0) system("cls");	//‰æ–Ê‚ÌƒNƒŠƒA
-			else if (strcmp(mode, "date") == 0) system("date /T");	//“ú•t•\¦
-			else if (strcmp(mode, "time") == 0) system("time /T");	//ŠÔ•\¦
-			else if (strcmp(mode, "now") == 0)	//“ú•t‚ÆŠÔ‚Ì•\¦
+			else if (strcmp(mode, "cls") == 0) system("cls");	//ç”»é¢ã®ã‚¯ãƒªã‚¢
+			else if (strcmp(mode, "date") == 0) system("date /T");	//æ—¥ä»˜è¡¨ç¤º
+			else if (strcmp(mode, "time") == 0) system("time /T");	//æ™‚é–“è¡¨ç¤º
+			else if (strcmp(mode, "now") == 0)	//æ—¥ä»˜ã¨æ™‚é–“ã®è¡¨ç¤º
 			{
 				system("date /T");
 				system("time /T");
 			}
-			else if (strcmp(mode, "fortune") == 0) fortune();	//è‚¢‹@”\
+			else if (strcmp(mode, "fortune") == 0) fortune();	//å ã„æ©Ÿèƒ½
 			else if (strncmp(mode, "option", 6) == 0){
 				if (strcmp(mode, "option") == 0) option();
 				else if (strcmp(mode, "option -h") == 0) help("help option");
 			}
 			else printf("mode error\n");
 
-			if (file != NULL) fclose(file);	//ƒtƒ@ƒCƒ‹‚ÌƒNƒ[ƒY
+			if (file != NULL) fclose(file);	//ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¯ãƒ­ãƒ¼ã‚º
 
-			fflush(stdin);	//ƒoƒbƒtƒ@Ì‚Ä
+			fflush(stdin);	//ãƒãƒƒãƒ•ã‚¡æ¨ã¦
 
 		}
 	}
@@ -142,31 +138,31 @@ int main(void)
 	return 0;
 }
 
-void new_addres( )	//ƒAƒhƒŒƒX“o˜^ŠÖ”
+void new_addres( )	//ã‚¢ãƒ‰ãƒ¬ã‚¹ç™»éŒ²é–¢æ•°
 {
 
-	char answer[ARRAY_SIZE];	//•Ô“š—p
+	char answer[ARRAY_SIZE];	//è¿”ç­”ç”¨
 
-	struct person student;	//\‘¢‘Ì‚ğstudent–¼‚ÅŒÄ‚Ño‚µ
+	struct person student;	//æ§‹é€ ä½“ã‚’studentåã§å‘¼ã³å‡ºã—
 
-	//Šw”Ô“ü—Í
+	//å­¦ç•ªå…¥åŠ›
 	printf("student number >");
 	scanf("%07ld", &student.number);
-	//–¼‘O“ü—Í
+	//åå‰å…¥åŠ›
 	printf("name >");
 	strget(student.name, sizeof student.name);
-	//“d˜b”Ô†“ü—Í
+	//é›»è©±ç•ªå·å…¥åŠ›
 	printf("phonenumber >");
 	scanf("%03ld%ld", &student.phone1, &student.phone2);
-	//“o˜^‚·‚é‚©‚Ç‚¤‚©‚Ì¿–â
+	//ç™»éŒ²ã™ã‚‹ã‹ã©ã†ã‹ã®è³ªå•
 	printf("Would you like to register?(yes/no) >");
 	strget(answer, sizeof answer);
 
-	if (strcmp(answer, "yes") == 0||strcmp(answer,"y")==0)	//yes‚¾‚Á‚½ê‡
+	if (strcmp(answer, "yes") == 0||strcmp(answer,"y")==0)	//yesã ã£ãŸå ´åˆ
 	{
-		//Šw”Ô‚Æ–¼‘O‚Ì‘‚«o‚µ
+		//å­¦ç•ªã¨åå‰ã®æ›¸ãå‡ºã—
 		fprintf(file, "%07ld %s ", student.number, student.name);
-		if (student.phone1 == 70 || student.phone1 == 80 || student.phone1 == 90)	//Œg‘Ñ”Ô†‚¾‚Á‚½ê‡
+		if (student.phone1 == 70 || student.phone1 == 80 || student.phone1 == 90)	//æºå¸¯ç•ªå·ã ã£ãŸå ´åˆ
 		{
 			fprintf(file, "%03ld%08ld\n", student.phone1, student.phone2);
 		}
@@ -174,7 +170,7 @@ void new_addres( )	//ƒAƒhƒŒƒX“o˜^ŠÖ”
 		{
 			fprintf(file, "%03ld%07ld\n", student.phone1, student.phone2);
 		}
-		//“o˜^‚µ‚½ƒAƒhƒŒƒX•\¦
+		//ç™»éŒ²ã—ãŸã‚¢ãƒ‰ãƒ¬ã‚¹è¡¨ç¤º
 		printf("\n%07ld %s ", student.number, student.name);
 		if (student.phone1 == 70 || student.phone1 == 80 || student.phone1 == 90)
 		{
@@ -187,7 +183,7 @@ void new_addres( )	//ƒAƒhƒŒƒX“o˜^ŠÖ”
 		printf("Register this addres\n");
 
 	}
-	//no‚¾‚Á‚½ê‡
+	//noã ã£ãŸå ´åˆ
 	else
 	{
 		printf("\n");
@@ -198,97 +194,97 @@ void new_addres( )	//ƒAƒhƒŒƒX“o˜^ŠÖ”
 
 }
 
-void read_addres( )	//ƒAƒhƒŒƒX’ ‚ÌŒÄ‚Ño‚µ
+void read_addres( )	//ã‚¢ãƒ‰ãƒ¬ã‚¹å¸³ã®å‘¼ã³å‡ºã—
 {
 
-	int i = 1;	//s•\¦
-	int spacelen;	//–¼‘O‚Æ“d˜b”Ô†‚ÌŠÔ‚Ì‹ó”’”
+	int i = 1;	//è¡Œè¡¨ç¤º
+	int spacelen;	//åå‰ã¨é›»è©±ç•ªå·ã®é–“ã®ç©ºç™½æ•°
 
-	struct person input;	//\‘¢‘Ì‚ğinput–¼‚ÅŒÄ‚Ño‚µ
+	struct person input;	//æ§‹é€ ä½“ã‚’inputåã§å‘¼ã³å‡ºã—
 
 	printf("\n");
-	//ÅŒã‚Ü‚Å“Ç‚İ‚Ş
+	//æœ€å¾Œã¾ã§èª­ã¿è¾¼ã‚€
 	while (fscanf(file, "%ld %s %03ld%ld", &input.number, input.name, &input.phone1, &input.phone2) != EOF)
 	{
-		printf("%dF\tŠw”ÔF%07ld –¼‘OF%s", i++, input.number, input.name);
-		//‹ó”’‚ğ‘µ‚¦‚é
+		printf("%dï¼š\tå­¦ç•ªï¼š%07ld åå‰ï¼š%s", i++, input.number, input.name);
+		//ç©ºç™½ã‚’æƒãˆã‚‹
 		for (spacelen = 0; spacelen < (20 - strlen(input.name)); ++spacelen)
 		{
 			printf(" ");
 		}
-		if (input.phone1 == 70 || input.phone1 == 80 || input.phone1 == 90)	//Œg‘Ñ”Ô†‚¾‚Á‚½ê‡
+		if (input.phone1 == 70 || input.phone1 == 80 || input.phone1 == 90)	//æºå¸¯ç•ªå·ã ã£ãŸå ´åˆ
 		{
-			printf("“d˜b”Ô†F%03ld%08ld\n", input.phone1, input.phone2);
+			printf("é›»è©±ç•ªå·ï¼š%03ld%08ld\n", input.phone1, input.phone2);
 		}
 		else
 		{
-			printf("“d˜b”Ô†F%03ld%07ld\n", input.phone1, input.phone2);
+			printf("é›»è©±ç•ªå·ï¼š%03ld%07ld\n", input.phone1, input.phone2);
 		}
 	}
 	printf("\n");
 }
 
-void serch_addres(char strserch[ARRAY_SIZE])	//ƒAƒhƒŒƒX‚ÌŒŸõ
+void serch_addres(char strserch[ARRAY_SIZE])	//ã‚¢ãƒ‰ãƒ¬ã‚¹ã®æ¤œç´¢
 {
-	struct person input;	//\‘¢‘Ì‚ğinput–¼‚ÅŒÄ‚Ño‚µ
+	struct person input;	//æ§‹é€ ä½“ã‚’inputåã§å‘¼ã³å‡ºã—
 
-	int i = 1;	//s”
-	int str1;	//•¶š•ª‰ğ‚Ì‚½‚ß
-	int str2 = 0;	//•¶š•ª‰ğ‚Ì‚½‚ß
-	int spacelen;	//‹ó”’—p
-	char serch[ARRAY_SIZE];	//ŒŸõ•¶š—ñ
-	char number[ARRAY_SIZE];	//“Ç‚İ‚ñ‚¾Šw”Ô‚ğ•¶š—ñ‚É
-	char phone1[ARRAY_SIZE];	//“Ç‚İ‚ñ‚¾“d˜b”Ô†‚ğ•¶š—ñ‚É
-	char phone2[ARRAY_SIZE];	//“Ç‚İ‚ñ‚¾“d˜b”Ô†‚ğ•¶š—ñ‚É
-	char serch_select[ARRAY_SIZE];	//ŒŸõƒ‚[ƒh—p
+	int i = 1;	//è¡Œæ•°
+	int str1;	//æ–‡å­—åˆ†è§£ã®ãŸã‚
+	int str2 = 0;	//æ–‡å­—åˆ†è§£ã®ãŸã‚
+	int spacelen;	//ç©ºç™½ç”¨
+	char serch[ARRAY_SIZE];	//æ¤œç´¢æ–‡å­—åˆ—
+	char number[ARRAY_SIZE];	//èª­ã¿è¾¼ã‚“ã å­¦ç•ªã‚’æ–‡å­—åˆ—ã«
+	char phone1[ARRAY_SIZE];	//èª­ã¿è¾¼ã‚“ã é›»è©±ç•ªå·ã‚’æ–‡å­—åˆ—ã«
+	char phone2[ARRAY_SIZE];	//èª­ã¿è¾¼ã‚“ã é›»è©±ç•ªå·ã‚’æ–‡å­—åˆ—ã«
+	char serch_select[ARRAY_SIZE];	//æ¤œç´¢ãƒ¢ãƒ¼ãƒ‰ç”¨
 
-	memset(serch_select, '\0', sizeof serch_select);	//serch_select”z—ñ‚Ì‰Šú‰»
-	memset(serch, '\0', sizeof serch);	//serch”z—ñ‚Ì‰Šú‰»
+	memset(serch_select, '\0', sizeof serch_select);	//serch_selecté…åˆ—ã®åˆæœŸåŒ–
+	memset(serch, '\0', sizeof serch);	//serché…åˆ—ã®åˆæœŸåŒ–
 
-	//search+•¶š—ñ‚¾‚Á‚½ê‡
+	//search+æ–‡å­—åˆ—ã ã£ãŸå ´åˆ
 	if (strncmp(strserch, "serch ", 6) == 0)
 	{
-		if (strncmp(strserch, "serch studentnumber ", 20) == 0)	//Šw”ÔŒŸõ
+		if (strncmp(strserch, "serch studentnumber ", 20) == 0)	//å­¦ç•ªæ¤œç´¢
 		{
 			for (str1 = 20; str1 <= strlen(strserch); ++str1)
 			{
-				serch[str2++] = strserch[str1];	//ŒŸõ‚µ‚½‚¢Šw”Ô‚¾‚¯“ü‚ê‚é
+				serch[str2++] = strserch[str1];	//æ¤œç´¢ã—ãŸã„å­¦ç•ªã ã‘å…¥ã‚Œã‚‹
 			}
-			serch[str2] = '\0';	//ÅŒã‚Énull‚ğ‘ã“ü
+			serch[str2] = '\0';	//æœ€å¾Œã«nullã‚’ä»£å…¥
 			strncpy(serch_select, "studentnumber", 13);
 		}
-		else if (strncmp(strserch, "serch name ", 11) == 0)	//–¼‘OŒŸõ
+		else if (strncmp(strserch, "serch name ", 11) == 0)	//åå‰æ¤œç´¢
 		{
 			for (str1 = 11; str1 <= strlen(strserch); ++str1)
 			{
-				serch[str2++] = strserch[str1];	//ŒŸõ‚µ‚½‚¢Šw”Ô‚¾‚¯“ü‚ê‚é
+				serch[str2++] = strserch[str1];	//æ¤œç´¢ã—ãŸã„å­¦ç•ªã ã‘å…¥ã‚Œã‚‹
 			}
-			serch[str2] = '\0';	//ÅŒã‚Énull‚ğ‘ã“ü
+			serch[str2] = '\0';	//æœ€å¾Œã«nullã‚’ä»£å…¥
 			strncpy(serch_select, "name", 4);
 		}
-		else if (strncmp(strserch, "serch phonenumber ", 18) == 0)	//“d˜b”Ô†ŒŸõ
+		else if (strncmp(strserch, "serch phonenumber ", 18) == 0)	//é›»è©±ç•ªå·æ¤œç´¢
 		{
 			for (str1 = 18; str1 <= strlen(strserch); ++str1)
 			{
-				serch[str2++] = strserch[str1];	//ŒŸõ‚µ‚½‚¢“d˜b”Ô†‚¾‚¯“ü‚ê‚é
+				serch[str2++] = strserch[str1];	//æ¤œç´¢ã—ãŸã„é›»è©±ç•ªå·ã ã‘å…¥ã‚Œã‚‹
 			}
-			serch[str2] = '\0';	//ÅŒã‚Énull‚ğ‘ã“ü
+			serch[str2] = '\0';	//æœ€å¾Œã«nullã‚’ä»£å…¥
 			strncpy(serch_select, "phonenumber", 12);
 		}
 		else
 		{
 			for (str1 = 6; str1 <= strlen(strserch); ++str1)
 			{
-				serch[str2++] = strserch[str1];	//ŒŸõ‚µ‚½‚¢•¶š—ñ‚¾‚¯‘ã“ü
+				serch[str2++] = strserch[str1];	//æ¤œç´¢ã—ãŸã„æ–‡å­—åˆ—ã ã‘ä»£å…¥
 			}
-			serch[str2] = '\0';	//ÅŒã‚Énull‚ğ‘ã“ü
+			serch[str2] = '\0';	//æœ€å¾Œã«nullã‚’ä»£å…¥
 			strncpy(serch_select, "all", 3);
 		}
 	}
 	else
 	{
 		printf("\n");
-		printf("What do you want to serch? >");	//ŒŸõ‚µ‚½‚¢ƒ‚[ƒh(?)‚ğ“ü—Í
+		printf("What do you want to serch? >");	//æ¤œç´¢ã—ãŸã„ãƒ¢ãƒ¼ãƒ‰(?)ã‚’å…¥åŠ›
 
 		strget(serch_select, sizeof serch_select);
 
@@ -300,7 +296,7 @@ void serch_addres(char strserch[ARRAY_SIZE])	//ƒAƒhƒŒƒX‚ÌŒŸõ
 			strcpy(serch_select, "all");
 			strcpy(strserch, "all");
 		}
-		printf("Input serch strings >");	//ŒŸõ‚µ‚½‚¢•¶š—ñ‚ğ“ü—Í
+		printf("Input serch strings >");	//æ¤œç´¢ã—ãŸã„æ–‡å­—åˆ—ã‚’å…¥åŠ›
 
 		strget(serch_select, sizeof serch_select);
 
@@ -328,12 +324,12 @@ void serch_addres(char strserch[ARRAY_SIZE])	//ƒAƒhƒŒƒX‚ÌŒŸõ
 		{
 			if (strstr(number, serch) != NULL)
 			{
-				printf("%dF\tŠw”ÔF%07ld –¼‘OF%s", i, input.number, input.name);
+				printf("%dï¼š\tå­¦ç•ªï¼š%07ld åå‰ï¼š%s", i, input.number, input.name);
 				for (spacelen = 0; spacelen < (20 - strlen(input.name)); ++spacelen)
 				{
 					printf(" ");
 				}
-				printf(" “d˜b”Ô†F");
+				printf(" é›»è©±ç•ªå·ï¼š");
 				if (input.phone1 == 70 || input.phone1 == 80 || input.phone1 == 90)
 				{
 					printf("%03ld%08ld\n", input.phone1, input.phone2);
@@ -348,12 +344,12 @@ void serch_addres(char strserch[ARRAY_SIZE])	//ƒAƒhƒŒƒX‚ÌŒŸõ
 		{
 			if (strstr(input.name, serch) != NULL)
 			{
-				printf("%dF\tŠw”ÔF%07ld –¼‘OF%s", i, input.number, input.name);
+				printf("%dï¼š\tå­¦ç•ªï¼š%07ld åå‰ï¼š%s", i, input.number, input.name);
 				for (spacelen = 0; spacelen < (20 - strlen(input.name)); ++spacelen)
 				{
 					printf(" ");
 				}
-				printf(" “d˜b”Ô†F");
+				printf(" é›»è©±ç•ªå·ï¼š");
 				if (input.phone1 == 70 || input.phone1 == 80 || input.phone1 == 90)
 				{
 					printf("%03ld%08ld\n", input.phone1, input.phone2);
@@ -368,12 +364,12 @@ void serch_addres(char strserch[ARRAY_SIZE])	//ƒAƒhƒŒƒX‚ÌŒŸõ
 		{
 			if (strstr(phone1, serch) != NULL)
 			{
-				printf("%dF\tŠw”ÔF%07ld –¼‘OF%s", i, input.number, input.name);
+				printf("%dï¼š\tå­¦ç•ªï¼š%07ld åå‰ï¼š%s", i, input.number, input.name);
 				for (spacelen = 0; spacelen < (20 - strlen(input.name)); ++spacelen)
 				{
 					printf(" ");
 				}
-				printf(" “d˜b”Ô†F");
+				printf(" é›»è©±ç•ªå·ï¼š");
 				if (input.phone1 == 70 || input.phone1 == 80 || input.phone1 == 90)
 				{
 					printf("%03ld%08ld\n", input.phone1, input.phone2);
@@ -388,12 +384,12 @@ void serch_addres(char strserch[ARRAY_SIZE])	//ƒAƒhƒŒƒX‚ÌŒŸõ
 		{
 			if (strstr(input.name, serch) != NULL || strstr(number, serch) != NULL || strstr(phone1, serch) != NULL)
 			{
-				printf("%dF\tŠw”ÔF%07ld –¼‘OF%s", i, input.number, input.name);
+				printf("%dï¼š\tå­¦ç•ªï¼š%07ld åå‰ï¼š%s", i, input.number, input.name);
 				for (spacelen = 0; spacelen < (20 - strlen(input.name)); ++spacelen)
 				{
 					printf(" ");
 				}
-				printf(" “d˜b”Ô†F");
+				printf(" é›»è©±ç•ªå·ï¼š");
 				if (input.phone1 == 70 || input.phone1 == 80 || input.phone1 == 90)
 				{
 					printf("%03ld%08ld\n", input.phone1, input.phone2);
@@ -479,7 +475,7 @@ void edit_addres( )
 		while (fscanf(fp_hoge, "%ld %s %03ld%ld", &input.number, input.name, &input.phone1, &input.phone2) != EOF)
 		{
 			fprintf(file, "%07ld %s ", input.number, input.name);
-			if (i == number) printf("%dF\tŠw”ÔF%07ld –¼‘OF%s", i, input.number, input.name);
+			if (i == number) printf("%dï¼š\tå­¦ç•ªï¼š%07ld åå‰ï¼š%s", i, input.number, input.name);
 			for (spacelen = 0; spacelen < (20 - strlen(input.name)); ++spacelen)
 			{
 				printf(" ");
@@ -487,12 +483,12 @@ void edit_addres( )
 			if (input.phone1 == 70 || input.phone1 == 80 || input.phone1 == 90)
 			{
 				fprintf(file, "%03ld%08ld\n", input.phone1, input.phone2);
-				if (i == number) printf("“d˜b”Ô†F%03ld%08ld\n", input.phone1, input.phone2);
+				if (i == number) printf("é›»è©±ç•ªå·ï¼š%03ld%08ld\n", input.phone1, input.phone2);
 			}
 			else
 			{
 				fprintf(file, "%03ld%07ld\n", input.phone1, input.phone2);
-				if (i == number) printf("“d˜b”Ô†F%03ld%07ld\n", input.phone1, input.phone2);
+				if (i == number) printf("é›»è©±ç•ªå·ï¼š%03ld%07ld\n", input.phone1, input.phone2);
 			}
 			i++;
 		}
@@ -644,29 +640,29 @@ void game(){
 	computer_number = rand() % 99 + 1;
 	computer_answer = rand() % 99 + 1;
 
-	printf("2Œ…ˆÈ“à‚Ì”š‚ğ“–‚Ä‡‚¢‚Ü‚·\n");
+	printf("2æ¡ä»¥å†…ã®æ•°å­—ã‚’å½“ã¦åˆã„ã¾ã™\n");
 
-	printf("2Œ…ˆÈ“à‚Ì©•ª‚Ì”š‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢ >");
+	printf("2æ¡ä»¥å†…ã®è‡ªåˆ†ã®æ•°å­—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ >");
 	scanf("%d", &my_number);
 
-	printf("2Œ…ˆÈ“à‚ÌƒRƒ“ƒsƒ…[ƒ^‚Ì”š‚ğ“–‚Ä‚Ä‚­‚¾‚³‚¢\n");
+	printf("2æ¡ä»¥å†…ã®ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ã®æ•°å­—ã‚’å½“ã¦ã¦ãã ã•ã„\n");
 
 
 	for (limit = rand() % 6 + 5; limit > 0 && answer != computer_number&&computer_answer != my_number; limit--){
-		printf("c‚è%d‰ñ\n", limit);
-		printf("”š‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢ >");
+		printf("æ®‹ã‚Š%då›\n", limit);
+		printf("æ•°å­—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ >");
 		scanf("%d", &answer);
 
 		if (answer == computer_number){
-			printf("“–‚½‚è‚Å‚·II\n");
+			printf("å½“ãŸã‚Šã§ã™ï¼ï¼\n");
 		}
 		else{
 			if (answer > computer_number){
-				printf("”š‚ª‚Å‚©‚¢‚Å‚·\n");
+				printf("æ•°å­—ãŒã§ã‹ã„ã§ã™\n");
 			}
 			else
 			{
-				printf("”š‚ª¬‚³‚¢‚Å‚·\n");
+				printf("æ•°å­—ãŒå°ã•ã„ã§ã™\n");
 			}
 		}
 
@@ -682,16 +678,16 @@ void game(){
 		}
 
 		if (answer != computer_number){
-			printf("ƒRƒ“ƒsƒ…[ƒ^‚Ì‰ñ“š >%d\n", computer_answer);
+			printf("ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ã®å›ç­” >%d\n", computer_answer);
 			if (computer_answer == my_number){
-				printf("ƒRƒ“ƒsƒ…[ƒ^‚ÌŸ‚¿‚Å‚·\n");
+				printf("ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ã®å‹ã¡ã§ã™\n");
 			}
 		}
 	}
 
 	if (answer != computer_number){
-		printf("ƒhƒJƒX\n");
-		printf("ƒRƒ“ƒsƒ…[ƒ^‚Ì“š‚¦‚Í %d ‚Å‚·\n", computer_number);
+		printf("ãƒ‰ã‚«ã‚¹\n");
+		printf("ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ã®ç­”ãˆã¯ %d ã§ã™\n", computer_number);
 	}
 
 	printf("\n");
