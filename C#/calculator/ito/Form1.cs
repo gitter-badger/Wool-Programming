@@ -17,6 +17,11 @@ namespace ito
 			InitializeComponent();
 		}
 
+		/// <summary>
+		///Calcボタンをクリックしたときに呼び出される
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void Calc_Click(object sender, EventArgs e)
 		{
 			try
@@ -57,6 +62,11 @@ namespace ito
 			}
 		}
 
+		/// <summary>
+		/// プログラムが起動したときに呼び出される
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			comboBox1.SelectedIndex = 0;
