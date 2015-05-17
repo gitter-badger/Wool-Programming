@@ -1,0 +1,13 @@
+#ignore file
+*.exe
+*.obj
+*.suo
+
+#vim
+*.~
+*.swp
+
+#ignore folder
+bin/
+obj/
+
