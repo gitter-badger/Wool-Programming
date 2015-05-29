@@ -1,6 +1,12 @@
 Wool-Programming
 ================
-#開発環境
+###言語
+* C++
+* C#
+* Python
+
+===============
+###開発環境
 * Microsoft Visual Studio 2013 Professional
 * PyCharm Community Edition
 * Boost 1.57.0
