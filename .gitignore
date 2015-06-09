@@ -2,6 +2,8 @@
 *.exe
 *.obj
 *.suo
+*.opensdf
+*.sdf
 
 #vim
 *.~
@@ -10,4 +12,4 @@
 #ignore folder
 bin/
 obj/
-
+Debug/
