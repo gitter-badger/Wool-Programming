@@ -34,12 +34,12 @@ void onMouse(int event, int x, int y, int flags, void* param){
 			}
 			break;
 
-		//左クリックされたとき
+			//左クリックされたとき
 		case EVENT_LBUTTONDOWN:
 			mouseclick = true;
 			break;
 
-		//指が離れた時
+			//指が離れた時
 		case EVENT_LBUTTONUP:
 			mouseclick = false;
 			break;
@@ -75,6 +75,8 @@ int main(){
 	cap.set(CV_CAP_PROP_FRAME_WIDTH, width);
 	cap.set(CV_CAP_PROP_FRAME_HEIGHT, height);
 
+	//HSV空間をそれぞれの要素に分けるため
+	vector<Mat> splitimage;
 
 	while (1){
 		//カメラ映像を取得
@@ -92,10 +94,7 @@ int main(){
 		//デバッグ用にそれぞれの値をコンソールに出力
 		printf("%d, %d, %d, %d, %d, %d\n", low_hue, high_hue, low_saturation, high_saturation, low_value, high_value);
 
-		//HSV空間をそれぞれの要素に分けるため
-		Mat splitimage[3];
-
-		//それぞれの要素に分けます
+		//それぞれの要素に分ける
 		split(hsv, splitimage);
 
 		if (mouseclick){
@@ -163,7 +162,7 @@ int main(){
 
 		imshow("Mask", mask_image);
 
-
+		splitimage.clear();
 
 		int c = waitKey(33);
 		//ENTERキーが押されたら

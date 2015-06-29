@@ -12,7 +12,7 @@ int main(){
 
 	VideoCapture cap(0);
 
- 	cap.set(CV_CAP_PROP_FRAME_HEIGHT, 480);
+	cap.set(CV_CAP_PROP_FRAME_HEIGHT, 480);
 	cap.set(CV_CAP_PROP_FRAME_HEIGHT, 640);
 
 	if (!cap.isOpened()){
@@ -32,7 +32,7 @@ int main(){
 
 	std::vector<Rect> eyeobj;
 
-	while (waitKey(1)==-1){
+	while (waitKey(1) == -1){
 		cap >> img;
 
 		cvtColor(img, gray_img, CV_BGR2GRAY);
@@ -41,9 +41,13 @@ int main(){
 
 		for (std::vector<Rect>::const_iterator e = eyeobj.begin(); e != eyeobj.end(); ++e){
 			rectangle(img, Point(e->x, e->y), Point(e->x + e->width, e->y + e->height), Scalar(0, 0, 0), -1);
+
+			putText(img, "Criminal", Point(e->x + e->width / 2, e->y - e->height/2), FONT_HERSHEY_TRIPLEX, 1.5, Scalar(0, 200, 0), 1, CV_AA);
 		}
 
 		imshow("Output", img);
+
+		eyeobj.clear();
 
 	}
 
