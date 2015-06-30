@@ -10,6 +10,8 @@ int main(){
 
 	Mat img, gray_img;
 
+	int rectsize = 5;
+
 	VideoCapture cap(0);
 
 	cap.set(CV_CAP_PROP_FRAME_HEIGHT, 480);
@@ -33,6 +35,9 @@ int main(){
 	std::vector<Rect> eyeobj;
 
 	while (waitKey(1) == -1){
+
+		createTrackbar("rectsize", "Output", &rectsize, 50);
+
 		cap >> img;
 
 		cvtColor(img, gray_img, CV_BGR2GRAY);
@@ -40,9 +45,9 @@ int main(){
 		cascade.detectMultiScale(gray_img, eyeobj, 1.1, 3, CV_HAAR_SCALE_IMAGE, Size(10, 10));
 
 		for (std::vector<Rect>::const_iterator e = eyeobj.begin(); e != eyeobj.end(); ++e){
-			rectangle(img, Point(e->x, e->y), Point(e->x + e->width, e->y + e->height), Scalar(0, 0, 0), -1);
+			rectangle(img, Point(e->x - rectsize, e->y - rectsize), Point(e->x + e->width+rectsize , e->y + e->height+rectsize), Scalar(0, 0, 0), -1);
 
-			putText(img, "Criminal", Point(e->x + e->width / 2, e->y - e->height/2), FONT_HERSHEY_TRIPLEX, 1.5, Scalar(0, 200, 0), 1, CV_AA);
+			putText(img, "Criminal", Point(e->x + e->width / 2, e->y - e->height/2), FONT_HERSHEY_TRIPLEX, 1.5, Scalar(100, 200, 0), 1, CV_AA);
 		}
 
 		imshow("Output", img);
