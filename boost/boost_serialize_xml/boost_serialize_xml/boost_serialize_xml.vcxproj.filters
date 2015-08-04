@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SerializeXml.cpp">
+    <ClCompile Include="SerializeXml.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClCompile>
   </ItemGroup>

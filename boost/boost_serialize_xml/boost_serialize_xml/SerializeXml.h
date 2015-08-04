@@ -1,3 +1,12 @@
+/**
+* @file SerializeXml.h
+* @brief xml serialize
+* @author Shota Hirama
+* @date 2015/08/05 doxygen
+* @date 2015/08/05 create
+*/
+
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -10,14 +19,28 @@
 
 class SerializeXml{
 public:
+	/**
+	 * @fn コンストラクタ
+	 * @breaf 値代入
+	 */
 	SerializeXml() :a(0), b(10), c(20), d(30){};
 
+	/**
+	 * @fn save
+	 * @breaf xml保存
+	 * @param filename ファイル名
+	 */
 	void save(const std::string &filename){
 		std::ofstream ofs(filename);
 		boost::archive::xml_oarchive oarchive(ofs);
 		oarchive << boost::serialization::make_nvp("test", this);
 	}
 
+	/**
+	 * @fn read
+	 * @breaf xml読み込み
+	 * @param filename ファイル名
+	 */
 	static SerializeXml read(const std::string &filename){
 		SerializeXml serialize;
 		std::ifstream ifs(filename);

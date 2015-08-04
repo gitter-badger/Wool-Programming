@@ -1,0 +1,35 @@
+\hypertarget{_serialize_xml_8h}{}\section{Serialize\+Xml.\+h ファイル}
+\label{_serialize_xml_8h}\index{Serialize\+Xml.\+h@{Serialize\+Xml.\+h}}
+
+
+xml serialize  
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$boost\textbackslash{}serialization\textbackslash{}serialization.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost\textbackslash{}serialization\textbackslash{}nvp.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost\textbackslash{}serialization\textbackslash{}string.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost\textbackslash{}archive\textbackslash{}xml\+\_\+oarchive.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost\textbackslash{}archive\textbackslash{}xml\+\_\+iarchive.\+hpp$>$}\\*
+Serialize\+Xml.\+h の依存先関係図\+:
+% FIG 0
+\subsection*{クラス}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_serialize_xml}{Serialize\+Xml}
+\end{DoxyCompactItemize}
+
+
+\subsection{詳解}
+xml serialize 
+
+\begin{DoxyAuthor}{著者}
+Shota Hirama 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日付}
+2015/08/05 doxygen 
+
+2015/08/05 create 
+\end{DoxyDate}
