@@ -6,6 +6,8 @@
 #include <boost\property_tree\ptree.hpp>
 #include <boost\foreach.hpp>
 
+/*boost ƒeƒXƒg*/
+
 struct Game
 {
 	std::string title;
