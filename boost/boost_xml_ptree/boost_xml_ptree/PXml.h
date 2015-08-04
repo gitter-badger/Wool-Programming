@@ -6,7 +6,7 @@
 #include <boost\property_tree\ptree.hpp>
 #include <boost\foreach.hpp>
 
-/*boost ƒeƒXƒg*/
+/*boost ãƒ†ã‚¹ãƒˆ*/
 
 struct Game
 {
