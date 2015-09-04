@@ -1,6 +1,8 @@
 Wool-Programming
 ================
 ###言語
+
+[![Join the chat at https://gitter.im/shotahirama/Wool-Programming](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/shotahirama/Wool-Programming?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 * C++
 * C#
 * Python
